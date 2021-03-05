@@ -1,0 +1,40 @@
+<!-- <div class="row navbar navbar-dark text-center">
+	<div class="col-lg-4 offset-lg-4">
+		<h1 class="titulo">Lista de Colaboradores</h1>
+	</div>
+</div> -->
+<div class="container text-center mt-3">
+    <app-count-colabs
+        [todos]="totalColaboradores()"
+        [masculino]="totalMas()"
+        [femenino]="totalFem()"
+        (changeRadio)="colabRadioChange($event)">
+    </app-count-colabs>
+
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>N°</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Sexo</th>
+                    <th>Salario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let colaborador of listcolabs">
+                        <tr *ngIf="buttonSelect == 'Todos' || buttonSelect == colaborador.sexo">
+                            <td>{{ colaborador.legajo }}</td>
+                            <td>{{ colaborador.nombre }}</td>
+                            <td>{{ colaborador.apellido }}</td>
+                            <td>{{ colaborador.sexo }}</td>
+                            <td>{{ colaborador.salario | currency }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
